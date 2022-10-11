@@ -1,0 +1,10 @@
+.data__button{
+    box-sizing: border-box;
+    align-self: center;
+    padding: 10px 0;
+}
+.data__inner{
+    display: flex;
+    flex-direction: column;
+    
+}

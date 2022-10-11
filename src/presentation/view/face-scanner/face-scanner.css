@@ -1,0 +1,126 @@
+.face {
+    background-color: #f1f1f14f;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 250px;
+}
+
+.face__validation{
+    position: fixed;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    
+}
+.face__validation-inner{
+    background: none;
+   
+    padding: 50px 50px 24px 50px;
+  
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: space-around;
+
+    width: 150px;
+    border-radius: 100%;
+    height: 200px;
+    border: 4px dashed #ff0000;
+}
+
+.face .face__video {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    flex-grow: 0;
+    flex-shrink: 0;
+    transform: rotateY(180deg);
+    position: relative;
+}
+
+.face .face__video video {
+    width: 1280px;
+    height: 720px;
+}
+
+/* TODO: remove that style block */
+.face .face__video .face__contur {
+    top: 150px;
+    left: 440px;
+    position: absolute;
+    align-self: center;
+    justify-self: center;
+    width: 400px;
+    border-radius: 100%;
+    height: 480px;
+    border: 4px dashed #ff0000;
+    z-index: 2;
+}
+
+.face .face__video .face__square {
+    position: absolute;
+    align-self: center;
+    justify-self: center;
+    top: 0;
+    height: 0;
+    width: 100%;
+    height: 100%;
+    /* border: 2px solid #ce3838a6; */
+    background-color: #0000008a;
+    --mask1: radial-gradient(circle at 50% 55%, transparent 0, transparent 35%, black 0%, black 100%, transparent 0%, transparent);
+    /* webkit needed for Chrome */
+    -webkit-mask-image: var(--mask1);
+    mask-image: var(--mask1);
+}
+
+.face .face__video .face__icon {
+    position: absolute;
+    align-self: center;
+    justify-self: center;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+    color: #1357a6;
+}
+
+.face .face__video .face__flash {
+    content: '';
+    position: absolute;
+    top: 0;
+    height: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    opacity: 0;
+    animation: flash-light 0.5s;
+    z-index: 5;
+}
+
+.face .face__video canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+.face .face__video img {
+    position: absolute;
+    z-index: 3;
+}
+
+.face .text {
+    text-align: center;
+
+    display: none;
+}

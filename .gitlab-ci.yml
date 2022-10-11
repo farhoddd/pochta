@@ -1,0 +1,42 @@
+image: node:14.16.0
+
+before_script:
+  - 'apk --update add git openssh && rm -rf /var/lib/apt/lists/* && rm /var/cache/apk/*'
+
+stages:
+  - build
+  - docker
+
+cache:
+  key: "$CI_COMMIT_REF_SLUG"
+  paths:
+    - node_modules/
+
+build:
+  stage: build
+  script:
+    - yarn install
+    - CI=false yarn build
+  artifacts:
+    paths:
+      - docker/build/
+  only:
+    - develop
+    - master
+    - release-*
+
+docker:
+  image: docker:stable
+  services:
+    - docker:19.03.9-dind
+  stage: docker
+  script:
+    - "export BUILD_VERSION=$(echo $CI_COMMIT_REF_NAME | sed -e 's/release-//' | sed -e 's/master/latest/' | sed -e 's/develop/beta/')" 
+    - "docker login $CI_REGISTRY -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD"
+    - "echo $BUILD_VERSION"
+    - "docker build -t $CI_REGISTRY/crocos.kz/asba-arm-web:$BUILD_VERSION ./docker"
+    - "docker push $CI_REGISTRY/crocos.kz/asba-arm-web:$BUILD_VERSION"
+  only:
+    - develop
+    - master
+    - release-*

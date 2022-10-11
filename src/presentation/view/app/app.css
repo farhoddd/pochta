@@ -1,0 +1,122 @@
+.app {
+    color: #000;
+    position: relative;
+    font-size: 14px;
+    min-height: 100vh;
+    padding-top: 4em;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.app::before {
+    content: '';
+    background-color: #1257a6;
+    position: absolute;
+    top: 60%;
+    left: 0;
+    width: 100%;
+    bottom: 0;
+    z-index: -1;
+}
+
+.app__logo {
+    margin-bottom: 2em;
+    width: 200px;
+}
+
+.app__content {
+    display: flex;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px 0px #65656542;
+    z-index: 1;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.app__content .result,
+.app__content .loading {
+    width: 600px;
+    height: 600px;
+}
+
+.app__content .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app__content .loading svg {
+    width: 50px;
+    height: 50px;
+    fill: #1257a6;
+}
+
+.text {
+    color: #000;
+    font-size: 1em;
+}
+
+.text.text--small {
+    font-size: 0.8em;
+}
+
+.text.text--red {
+    color: red;
+}
+
+.button {
+    border: 1px solid #3fad97;
+    color: #000;
+}
+
+.button:hover {
+    border: 1px solid #3fad97;
+}
+
+.button.button--red {
+    background-color: red;
+}
+
+.button--red:hover {
+    background-color: rgb(255 0 0 / 80%);
+}
+
+.button.button--primary {
+    background-color: #5acdb6;
+    color: #fff;
+}
+
+.button--primary:hover {
+    background-color: rgb(90 205 182 / 80%);
+}
+
+.progress-bar {
+    padding: 20px;
+}
+
+.controls {
+    display: flex;
+    height: 3.5em;
+}
+
+.controls .controls__button {
+    border-radius: 0;
+    height: 100%;
+    font-size: 1.2em;
+    flex-grow: 1;
+}
+
+@keyframes flash-light {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+.ant-steps-horizontal:not(.ant-steps-label-vertical) .ant-steps-item:first-child{
+    padding-right:100px;
+}
